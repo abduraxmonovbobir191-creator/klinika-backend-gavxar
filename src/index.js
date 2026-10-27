@@ -8,12 +8,15 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 // Health check
 app.get('/', (req, res) => {
   res.json({ message: 'Gavxar Clinic API is running', clinic: 'Gavxar Clinic' });
 });
 
-// Sample routes (will expand)
 app.get('/api/doctors', (req, res) => {
   res.json([
     { id: 1, name: 'Dr. Aliyeva Nodira', specialty: 'Terapevt' },
