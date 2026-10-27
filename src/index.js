@@ -10,19 +10,14 @@ app.use(express.json());
 
 // Routes
 const authRoutes = require('./routes/auth');
+const doctorsRoutes = require('./routes/doctors');
+
 app.use('/api/auth', authRoutes);
+app.use('/api/doctors', doctorsRoutes);
 
 // Health check
 app.get('/', (req, res) => {
   res.json({ message: 'Gavxar Clinic API is running', clinic: 'Gavxar Clinic' });
-});
-
-app.get('/api/doctors', (req, res) => {
-  res.json([
-    { id: 1, name: 'Dr. Aliyeva Nodira', specialty: 'Terapevt' },
-    { id: 2, name: 'Dr. Karimov Jasur', specialty: 'Kardiolog' },
-    { id: 3, name: 'Dr. Rahimova Malika', specialty: 'Pediatr' },
-  ]);
 });
 
 app.post('/api/appointments', (req, res) => {
