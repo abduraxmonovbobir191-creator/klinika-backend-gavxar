@@ -11,22 +11,15 @@ app.use(express.json());
 // Routes
 const authRoutes = require('./routes/auth');
 const doctorsRoutes = require('./routes/doctors');
+const appointmentsRoutes = require('./routes/appointments');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorsRoutes);
+app.use('/api/appointments', appointmentsRoutes);
 
 // Health check
 app.get('/', (req, res) => {
   res.json({ message: 'Gavxar Clinic API is running', clinic: 'Gavxar Clinic' });
-});
-
-app.post('/api/appointments', (req, res) => {
-  const { doctor, time, patient } = req.body;
-  res.status(201).json({ 
-    success: true, 
-    message: 'Navbat qabul qilindi', 
-    data: { doctor, time, patient } 
-  });
 });
 
 app.listen(PORT, () => {
